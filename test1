@@ -1,7 +1,15 @@
-Fuzzy Address Matching & Link Analysis:
-Apply fuzzy logic and link analysis to detect individuals or related groups reusing or slightly modifying common addresses.
-This helps surface hidden linkages with prior fraud, charged-off, or rejected clients that evade traditional onboarding checks.
+Problem Statement
 
-Cross-Product & Temporal Clustering:
-Cluster linked applications across products and time periods to identify recurring address patterns — such as seasonal re-entries or coordinated bursts.
-These temporal patterns highlight systematic control weaknesses and potential collusive behavior across entities.
+Retail accounts used by scammers often show sudden inflows from victims followed by rapid outward transfers, frequently to known mule accounts. Detecting such short-lived but high-velocity patterns early is difficult through traditional rule-based monitoring.
+
+Objectives
+
+Identify scammer-like retail accounts by analyzing behavioral anomalies such as abrupt inflow spikes, high fund dispersion, and short balance retention.
+
+Prioritize and escalate accounts that have direct or indirect transactional linkages with known mule accounts, signalling coordinated fraud networks.
+
+Deliver explainable, data-driven risk insights that enable timely blocking, enhanced monitoring, and support for audit and fraud-control actions.
+
+Proposal
+
+Apply data-science-based behavioral and graph analytics to detect scammer accounts by combining anomaly scores from transaction patterns with proximity to confirmed mule accounts, generating a ranked list for proactive investigation.
