@@ -1,7 +1,7 @@
 Fuzzy Address Matching & Link Analysis:
-Use fuzzy logic and link analysis to detect individuals or groups reusing or slightly modifying the same address.
-This uncovers hidden networks tied to past fraud, rejected, or charged-off clients that bypass onboarding checks.
+Apply fuzzy logic and link analysis to detect individuals or related groups reusing or slightly modifying common addresses.
+This helps surface hidden linkages with prior fraud, charged-off, or rejected clients that evade traditional onboarding checks.
 
 Cross-Product & Temporal Clustering:
-Cluster linked applications across products and time to reveal recurring address patterns — short bursts, seasonal re-entries, or delayed reapplications.
-These temporal insights expose systematic control gaps or collusive behavior across entities.
+Cluster linked applications across products and time periods to identify recurring address patterns — such as seasonal re-entries or coordinated bursts.
+These temporal patterns highlight systematic control weaknesses and potential collusive behavior across entities.
