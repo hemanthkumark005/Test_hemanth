@@ -13,3 +13,33 @@ Deliver explainable, data-driven risk insights that enable timely blocking, enha
 Proposal
 
 Apply data-science-based behavioral and graph analytics to detect scammer accounts by combining anomaly scores from transaction patterns with proximity to confirmed mule accounts, generating a ranked list for proactive investigation.
+
+Functional Value Add
+
+Early detection of scammer accounts
+
+Linkage intelligence with known mules
+
+Explainable, prioritized risk scoring
+
+Benefits
+
+Proactive disruption of fraud networks
+
+Reduced financial and reputational losses
+
+Strengthened audit and AML controls
+
+Primary Datasets
+
+Transaction records
+
+Known mule account list
+
+Beneficiary and payee mapping
+
+Customer metadata
+
+Behavioral metadata:
+
+Historical case feedback:
