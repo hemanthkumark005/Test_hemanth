@@ -1,1 +1,6 @@
 
+Detect potential scammer accounts showing abnormal inflow–outflow behaviors and rapid fund dispersion patterns within retail banking.
+
+Apply clustering and unsupervised anomaly detection to group accounts with similar high-velocity or burst transaction characteristics that deviate from peer norms.
+
+Leverage transactional linkages with known mule accounts to strengthen risk prioritization and highlight accounts involved in coordinated fraud flows.
