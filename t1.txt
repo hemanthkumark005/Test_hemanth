@@ -1,9 +1,1 @@
-Working with Monu on the automated control analysis initiative has been a very positive experience. His expertise in Dataiku has been extremely valuable, especially in navigating complex workflows and optimizing design choices. I really appreciate his proactive guidance — he makes sure the team is aware of best practices and avoids potential pitfalls early.
-
-Monu brings both technical depth and a collaborative mindset, which has helped streamline our work and improve delivery efficiency. I look forward to continuing our partnership and exploring more automation opportunities together.
-
-Working with Lavkush has been a great experience. Although our Mule audit work is still in progress, I have already seen the clarity and ownership he brings to problem-solving. His contributions during our PDF translation code reviews were very helpful — he provides structured feedback and ensures we think through edge cases thoroughly.
-In addition to project collaboration, he was my onboarding buddy and played a key role in helping me settle in. From gaining access to tools to understanding team processes, he was always approachable and patient. His support made my initial days much smoother.
-Overall, I truly appreciate his collaborative nature, technical involvement, and willingness to help. Looking forward to delivering strong outcomes together on the ongoing audit initiative.
-
-I would like to acknowledge Shubham’s proactive contribution in conducting a VS Code setup and onboarding session for the team, which significantly improved our development efficiency. Additionally, his work on Project Phoenix demonstrated strong code quality, structure, and maintainability. Excellent initiative and delivery.
+this is sample file. 
