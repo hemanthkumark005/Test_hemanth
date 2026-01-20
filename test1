@@ -1,1 +1,37 @@
-This is a text doc of testing. 
+load_data(excel_path, sheet_name) -> DataFrame (with caching + last_modified check)
+
+get_schema(df) -> dict (columns, dtypes, sample uniques for categoricals, min/max date)
+
+parse_user_request(question, schema) -> dict
+
+Use light heuristics FIRST.
+
+If ambiguous, call LLM to output a small JSON “query plan” with:
+intent: one of ["aggregate","trend","top_n","filter_rows","describe","definition"]
+filters: {col: values or {from,to} for dates}
+group_by: [cols]
+metrics: {col: agg} where agg in ["sum","mean","count","nunique","min","max"]
+top_n: int
+sort_by: metric col
+sort_order: "asc"|"desc"
+time_freq: "D"|"W"|"M"
+
+Validate the plan against schema (columns exist, metrics numeric, etc.). If invalid, repair or ask a clarifying question.
+
+apply_filters(df, filters, date_col) -> DataFrame
+
+compute_aggregate(df, group_by, metrics) -> DataFrame or dict
+
+compute_trend(df, date_col, freq, metrics, filters) -> DataFrame
+
+compute_top_n(df, group_by, metrics, sort_by, n, order, filters) -> DataFrame
+
+get_basic_stats(df, numeric_cols) -> dict
+
+to_small_markdown_table(df, max_rows=15) -> str (to send compact evidence to LLM)
+
+generate_answer_llm(question, computed_result, evidence_table, notes, llama) -> str
+
+Provide the computed numbers + a small table.
+
+Instruct LLM: “Use only provided numbers; if missing, say you cannot answer.”
