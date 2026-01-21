@@ -1,37 +1,203 @@
-load_data(excel_path, sheet_name) -> DataFrame (with caching + last_modified check)
+Good: 
 
-get_schema(df) -> dict (columns, dtypes, sample uniques for categoricals, min/max date)
+Regulations Considered
 
-parse_user_request(question, schema) -> dict
+1. Legal Enforceability Before Disbursement (Section 2.4)
+All credit agreements and security documentation must be legally enforceable prior to disbursement. This includes proper execution of contracts, completion of collateral registration, and documented legal review for complex or high-value exposures.
 
-Use light heuristics FIRST.
+2. Credit File Completeness (Section 6.3)
+Credit files must contain all mandatory assessment, approval, legal, and compliance documentation before disbursement. Incomplete files must not proceed to disbursement without a formally approved exception.
 
-If ambiguous, call LLM to output a small JSON “query plan” with:
-intent: one of ["aggregate","trend","top_n","filter_rows","describe","definition"]
-filters: {col: values or {from,to} for dates}
-group_by: [cols]
-metrics: {col: agg} where agg in ["sum","mean","count","nunique","min","max"]
-top_n: int
-sort_by: metric col
-sort_order: "asc"|"desc"
-time_freq: "D"|"W"|"M"
+3. Conditions Precedent (Section 6.5)
+All approved conditions precedent must be satisfied and verified before funds are released, ensuring that key legal and risk safeguards are in place.
 
-Validate the plan against schema (columns exist, metrics numeric, etc.). If invalid, repair or ask a clarifying question.
+Compliance Report
 
-apply_filters(df, filters, date_col) -> DataFrame
+The institution is fully compliant with the requirements under Sections 2.4, 6.3, and 6.5 for corporate loan disbursement.
 
-compute_aggregate(df, group_by, metrics) -> DataFrame or dict
+In line with Section 2.4, all sampled loan files contained legally enforceable agreements supported by executed contracts, verified collateral registration documents, and documented legal opinions. No disbursements were made before enforceability conditions were met.
 
-compute_trend(df, date_col, freq, metrics, filters) -> DataFrame
+As required by Section 6.3, credit files were complete and included risk assessments, approval records, legal documentation, and compliance checks. There were no missing or expired documents in the reviewed samples.
 
-compute_top_n(df, group_by, metrics, sort_by, n, order, filters) -> DataFrame
+In accordance with Section 6.5, all conditions precedent were verified and signed off before funds were released. Disbursement controls were consistently applied, and no exceptions were observed.
 
-get_basic_stats(df, numeric_cols) -> dict
+These results demonstrate strong adherence to legal, documentation, and pre-disbursement control requirements, indicating a well-governed corporate lending process.
 
-to_small_markdown_table(df, max_rows=15) -> str (to send compact evidence to LLM)
 
-generate_answer_llm(question, computed_result, evidence_table, notes, llama) -> str
+BAD:
 
-Provide the computed numbers + a small table.
+Regulations Considered
 
-Instruct LLM: “Use only provided numbers; if missing, say you cannot answer.”
+1. Legal Enforceability (Section 2.4)
+2. Credit File Completeness (Section 6.3)
+3. Conditions Precedent (Section 6.5)
+
+Compliance Report
+
+The institution is compliant with Sections 2.4, 6.3, and 6.5.
+
+All required documents were available and the process was followed as per policy.
+Disbursement was done after approvals and checks were completed.
+No major issues were identified.
+
+
+
+Role:
+You are a banking regulatory compliance and internal audit expert.
+
+You will receive:
+
+Regulatory Text
+
+Regulatory Requirement(s)
+
+A Compliance Assessment
+
+Your task is to evaluate whether the compliance assessment is GOOD or BAD by checking:
+
+Alignment with the regulation
+
+Correct interpretation
+
+Clear explanation of how compliance is achieved
+
+Reference to relevant sections
+
+Adequate reasoning and evidence
+
+Input Format
+
+Regulatory Text:
+
+<text>
+
+
+Regulatory Requirement(s):
+
+<sections>
+
+
+Compliance Assessment:
+
+<assessment>
+
+Output Format (STRICT)
+
+Result: Good / Bad
+
+Reasoning:
+<why>
+
+Strengths:
+Weaknesses / Missing:
+Improvements:
+Decision Rules
+
+Vague or generic = Bad
+
+No section reference = Bad
+
+No explanation of “how” = Bad
+
+Clear, evidence-based, section-linked = GoodGood: 
+
+Regulations Considered
+
+1. Legal Enforceability Before Disbursement (Section 2.4)
+All credit agreements and security documentation must be legally enforceable prior to disbursement. This includes proper execution of contracts, completion of collateral registration, and documented legal review for complex or high-value exposures.
+
+2. Credit File Completeness (Section 6.3)
+Credit files must contain all mandatory assessment, approval, legal, and compliance documentation before disbursement. Incomplete files must not proceed to disbursement without a formally approved exception.
+
+3. Conditions Precedent (Section 6.5)
+All approved conditions precedent must be satisfied and verified before funds are released, ensuring that key legal and risk safeguards are in place.
+
+Compliance Report
+
+The institution is fully compliant with the requirements under Sections 2.4, 6.3, and 6.5 for corporate loan disbursement.
+
+In line with Section 2.4, all sampled loan files contained legally enforceable agreements supported by executed contracts, verified collateral registration documents, and documented legal opinions. No disbursements were made before enforceability conditions were met.
+
+As required by Section 6.3, credit files were complete and included risk assessments, approval records, legal documentation, and compliance checks. There were no missing or expired documents in the reviewed samples.
+
+In accordance with Section 6.5, all conditions precedent were verified and signed off before funds were released. Disbursement controls were consistently applied, and no exceptions were observed.
+
+These results demonstrate strong adherence to legal, documentation, and pre-disbursement control requirements, indicating a well-governed corporate lending process.
+
+
+BAD:
+
+Regulations Considered
+
+1. Legal Enforceability (Section 2.4)
+2. Credit File Completeness (Section 6.3)
+3. Conditions Precedent (Section 6.5)
+
+Compliance Report
+
+The institution is compliant with Sections 2.4, 6.3, and 6.5.
+
+All required documents were available and the process was followed as per policy.
+Disbursement was done after approvals and checks were completed.
+No major issues were identified.
+
+
+
+Role:
+You are a banking regulatory compliance and internal audit expert.
+
+You will receive:
+
+Regulatory Text
+
+Regulatory Requirement(s)
+
+A Compliance Assessment
+
+Your task is to evaluate whether the compliance assessment is GOOD or BAD by checking:
+
+Alignment with the regulation
+
+Correct interpretation
+
+Clear explanation of how compliance is achieved
+
+Reference to relevant sections
+
+Adequate reasoning and evidence
+
+Input Format
+
+Regulatory Text:
+
+<text>
+
+
+Regulatory Requirement(s):
+
+<sections>
+
+
+Compliance Assessment:
+
+<assessment>
+
+Output Format (STRICT)
+
+Result: Good / Bad
+
+Reasoning:
+<why>
+
+Strengths:
+Weaknesses / Missing:
+Improvements:
+Decision Rules
+
+Vague or generic = Bad
+
+No section reference = Bad
+
+No explanation of “how” = Bad
+
+Clear, evidence-based, section-linked = Good
