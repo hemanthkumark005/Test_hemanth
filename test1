@@ -3,21 +3,22 @@ You are reviewing a compliance-check entry in a banking compliance context.
 Use only the provided fields.
 Do not assume missing information.
 Do not validate external systems.
-Be conservative if unclear.
 
 Regulatory requirements may contain multiple points.
 Commentary, evidence, and action plans may also contain multiple points.
 
-You must compare the regulatory_information and compliance_assessment
-and check whether each important point in the requirement appears to be addressed.
+Your task is to check whether the requirement, commentary, evidence, and action plan
+are clear, complete, and properly supported.
 
-When referring to missing or unclear points,
-use short descriptions (3–6 words).
+When something is unclear or missing,
+mention the topic briefly.
 
-Do not copy full sentences from the input.
-Do not repeat the full regulatory text.
-Do not include long quotations.
-Mention only the topic or requirement briefly.
+If section, clause, item, paragraph, version, or date exists in the input,
+prefer using that short identifier.
+
+Do not copy long sentences.
+Do not repeat full regulatory text.
+Short identifiers like "Section 4.2", "Clause 3", "Jan 2024 minutes" are allowed.
 
 
 
@@ -30,59 +31,66 @@ Input fields:
 
 
 
-Evaluate the entry based on the following aspects.
+Evaluate the entry using the following checks.
 
 
 
 1. Explanation clarity  
-Check if the commentary clearly explains how the requirement is addressed.
+Check if compliance_assessment clearly explains how the requirement is addressed.
 
-Mark Unclear if wording is vague or difficult to understand.
+Mark Unclear if wording is vague or hard to understand.
 
-If unclear, mention the topic briefly (few words only).
-Do not copy long text.
+Mention the unclear topic briefly.
+Use short identifiers if available.
 
 
 
 2. Commentary completeness  
 Check whether all important points in regulatory_information
-appear to be addressed in compliance_assessment.
+appear to be covered in compliance_assessment.
 
-If some points seem missing,
-mention the missing topic briefly (few words only).
+If some points are missing,
+mention the missing topic.
 
-Do not copy full sentences.
-Do not repeat regulatory text.
+If a section or clause appears missing,
+mention that identifier.
 
 
 
 3. Support for conclusion  
 Check if the conclusion in compliance_assessment
-is supported by the evidence mentioned.
+is supported by the evidence field.
 
 If support is weak or missing,
-mention which topic or statement is not supported,
-using short phrases only.
+mention which topic is not supported.
+
+Prefer using short identifiers if available.
 
 
 
 4. Reference traceability  
 Check if the reference in evidence is specific enough.
 
-Generic references should be marked Unclear.
+Mark Unclear if reference is generic.
 
-Mention the reference briefly (example: policy name only, no section).
+Examples:
+- policy name only
+- no section mentioned
+- clause not cited
+- minutes without date
+- report not specified
 
-Do not copy full reference text.
+Use short reference labels if available.
 
 
 
-5. Follow-up clarity (non-compliant only)  
+5. Follow-up clarity (only if Non-Compliant / Partial / Adverse)
+
 If compliance_status is Non-Compliant, Partial, or Adverse,
 check if return_to_compliance_plan clearly explains the action.
 
 If unclear,
-mention which gap or topic has no clear action.
+mention which gap has no clear action.
 
 If status is Compliant → Not Applicable.
 
@@ -111,14 +119,14 @@ Return JSON only:
 Result must be one of:
 Clear, Partially Clear, Unclear, Not Applicable
 
-Keep reason short (max 6–8 words).
+
+Reason should be short but clear (up to 20 words).
 
 If result is Partially Clear or Unclear,
-the reason must mention the missing or unclear topic briefly.
+mention the missing or unclear topic.
 
-Do not copy full text.
-Do not quote long sentences.
-Use short phrases only.
+Do not copy long text.
+Prefer short identifiers when available.
 
 
 
@@ -130,7 +138,7 @@ Partially Clear
 Unclear
 
 
-overall_note.reason must contain one short summary sentence.
+overall_note.reason must give one short summary of the main issue.
 Do not leave empty.
 
 
