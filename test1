@@ -4,25 +4,30 @@ Use only the provided fields.
 Do not assume missing information.
 Do not validate external systems.
 
-Regulatory requirements may contain multiple pointers
-(example: section, clause, para, subpoint, 1.1, 1.2, (a), (b)).
+The inputs are plain text.
 
-Compliance commentary may also contain multiple points.
+regulatory_information may contain multiple requirement pointers,
+for example:
+- section / clause / para
+- 1.1, 1.2
+- R.1, R.2
+- (a), (b)
+- or mixed formats
+
+compliance_assessment may also contain multiple points.
 
 You must internally compare the requirement and commentary
-point-by-point and check whether each requirement point
-appears to be addressed.
+pointer-by-pointer at the highest visible hierarchy.
 
-IMPORTANT POINTER RULES:
-- Use only pointer identifiers that explicitly appear in the input text.
-- Do not create, rename, renumber, or normalize pointers.
-- Do not invent labels such as "Pointer 1", "Clause A", or "Section 3" unless that exact identifier is present in the input.
-- If no explicit pointer identifier is present, use a short topic label instead.
-- Do not list all points. Only report points that are missing, unclear, or not supported.
-
-Do not copy long sentences.
-Short identifiers from the input are allowed.
-
+IMPORTANT RULES:
+- First identify the highest-level pointers in regulatory_information.
+- Compare compliance_assessment against each pointer.
+- Do not output all pointers.
+- Only mention pointers if something is missing, unclear, or unsupported.
+- Use only labels that appear in the input.
+- Do not create, rename, or normalize pointer names.
+- If no label exists, use a short topic phrase.
+- Do not copy long text.
 
 
 Input fields:
@@ -33,82 +38,59 @@ Input fields:
 - return_to_compliance_plan
 
 
-
 Perform the following checks.
-
 
 
 1. Explanation clarity
 
-Check if compliance_assessment clearly explains
-how the requirement is addressed.
+Check whether compliance_assessment clearly explains how the requirement is addressed.
 
 Mark Unclear if wording is vague.
 
-If unclear, mention:
-- the exact input pointer identifier, if present
-- otherwise a short topic label
-
+If unclear, mention the pointer or topic.
 
 
 2. Commentary completeness
 
 Compare regulatory_information and compliance_assessment
-point-by-point.
+at the highest pointer level.
 
-If any requirement point appears missing,
-mention:
-- the exact input pointer identifier, if present
-- otherwise a short topic label
+If one or more requirement pointers appear missing,
+mark Partially Clear or Unclear.
 
-Do not invent new pointer names.
-Do not list all points.
-Only report missing ones.
-
+In reason, mention the missing pointer label if visible,
+otherwise mention the topic.
 
 
 3. Support for conclusion
 
-Check if the conclusion in compliance_assessment
-is supported by evidence.
+Check whether the conclusion is supported by evidence.
 
-If a requirement point is not supported by evidence,
-mention:
-- the exact input pointer identifier, if present
-- otherwise a short topic label
-
-Do not invent new pointer names.
-
+If a pointer is not supported,
+mention that pointer or topic.
 
 
 4. Reference traceability
 
-Check if evidence references are specific.
+Check whether the evidence reference is specific.
 
 Mark Unclear if reference is generic.
 
 Examples:
-- policy name only
-- no section cited
-- no clause
-- no date
-- no version
-
-Mention briefly what is missing.
-Use exact identifiers from evidence if present.
-Do not invent identifiers.
-
+policy name only
+no section cited
+no clause
+no date
+no version
 
 
 5. Follow-up clarity (only if Non-Compliant / Partial / Adverse)
 
-If compliance_status is Non-Compliant, Partial, or Adverse,
+If status is Non-Compliant / Partial / Adverse,
 check return_to_compliance_plan.
 
-If action is missing or unclear,
-mention:
-- the exact input pointer identifier, if present
-- otherwise a short topic label
+If action is unclear,
+mention the pointer or topic.
 
 If status is Compliant → Not Applicable.
 
@@ -134,29 +116,18 @@ Return JSON only:
 }
 
 
-Result must be one of:
-Clear, Partially Clear, Unclear, Not Applicable
-
-Reason should be short but clear (max 20 words).
-
-In reasons:
-- use exact pointer identifiers only if they exist in the input
-- otherwise use a short topic label
-- never invent pointer labels
+Rules for reason:
+- keep short (max 20 words)
+- mention pointer only if visible in input
+- otherwise mention topic
+- do not invent pointer labels
 - do not copy long text
 
 
+overall_note.result must be:
+Clear / Partially Clear / Unclear
 
-overall_note.result must always be filled.
-
-Allowed values:
-Clear
-Partially Clear
-Unclear
-
-overall_note.reason must summarize the main issue briefly.
-Do not invent pointer identifiers.
-
+overall_note.reason must always be filled.
 
 
 Review this entry:
