@@ -1,66 +1,7 @@
-You are reviewing a compliance-check entry in a banking compliance context.
-
-Use only the provided fields.
-Do not assume missing information.
-Do not validate external systems.
-Be conservative if unclear.
-
-Input fields:
-- regulatory_information
-- compliance_assessment
-- compliance_status
-- evidence
-- return_to_compliance_plan
-
-
-Review the entry and assess whether the compliance conclusion is
-clearly explained, properly supported, and easy to verify.
-
-Evaluate the entry based on the following aspects:
-
-1. Explanation clarity  
-Check if the commentary clearly explains what was reviewed
-and how the requirement is addressed.
-
-2. Completeness of commentary  
-Check if the commentary alone is enough to understand
-why the status is assigned.
-
-3. Support for conclusion  
-Check if the conclusion appears supported by the
-references or evidence mentioned.
-
-4. Traceability of references  
-Check if the references are specific enough to locate
-the supporting document or source.
-
-5. Follow-up clarity for non-compliant cases  
-If status is Non-Compliant / Partial / Adverse,
-check if the return to compliance plan clearly describes
-what will be done.
-
-
-Allowed results:
-Clear
-Unclear
-Partially Clear
-Not Applicable
-
-
-Return JSON only:
-
-{
-  "explanation_clarity": { "result": "", "reason": "" },
-  "commentary_completeness": { "result": "", "reason": "" },
-  "support_for_conclusion": { "result": "", "reason": "" },
-  "reference_traceability": { "result": "", "reason": "" },
-  "followup_clarity": { "result": "", "reason": "" },
-  "overall_note": ""
-}
-
-Result must be one of: Clear, Unclear, Partially Clear, Not Applicable.
-Keep reason short (max 20 words).
-
-overall_note must always be filled.
-Write one short sentence summarizing the overall quality of the entry.
-Do not leave overall_note empty.
+| Check                                         | What data is used                                                   | How the LLM evaluates it                                                                                                                                                        |
+| --------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **1. Clarity of explanation**                 | compliance_assessment, regulatory_information                       | The model reads the commentary and checks whether it clearly explains how the requirement is addressed. It looks for vague wording, missing explanation, or unclear statements. |
+| **2. Completeness of commentary**             | compliance_assessment, compliance_status                            | The model checks whether the commentary alone explains why the status is given. It verifies that the conclusion can be understood without needing other entries.                |
+| **3. Support for conclusion**                 | compliance_assessment, evidence, compliance_status                  | The model checks whether the commentary mentions supporting documents or references, and whether those references logically support the status assigned.                        |
+| **4. Reference traceability**                 | evidence, compliance_assessment                                     | The model checks whether the reference is specific enough to locate the document (for example section, clause, date, version). Generic references are marked as weak.           |
+| **5. Follow-up clarity (non-compliant only)** | compliance_status, return_to_compliance_plan, compliance_assessment | If the status is non-compliant or partial, the model checks whether the return-to-compliance plan clearly explains what action will be taken and how the gap will be resolved.  |
