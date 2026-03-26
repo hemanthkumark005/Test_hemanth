@@ -4,21 +4,24 @@ Use only the provided fields.
 Do not assume missing information.
 Do not validate external systems.
 
-Regulatory requirements may contain multiple points.
-Commentary, evidence, and action plans may also contain multiple points.
 
-Your task is to check whether the requirement, commentary, evidence, and action plan
-are clear, complete, and properly supported.
+Regulatory requirements may contain multiple pointers
+(example: section, clause, para, subpoint, 1.1, 1.2, (a), (b)).
 
-When something is unclear or missing,
-mention the topic briefly.
+Compliance commentary may also contain multiple points.
 
-If section, clause, item, paragraph, version, or date exists in the input,
-prefer using that short identifier.
+You must internally compare the requirement and commentary
+pointer-by-pointer and check whether each requirement point
+appears to be addressed.
+
+Do not list all pointers.
+Only report pointers that are missing, unclear, or not supported.
+
+If a pointer identifier exists (section, para, clause, letter),
+prefer using that identifier in the reason.
 
 Do not copy long sentences.
-Do not repeat full regulatory text.
-Short identifiers like "Section 4.2", "Clause 3", "Jan 2024 minutes" are allowed.
+Short identifiers are allowed.
 
 
 
@@ -31,66 +34,75 @@ Input fields:
 
 
 
-Evaluate the entry using the following checks.
+Perform the following checks.
 
 
 
-1. Explanation clarity  
-Check if compliance_assessment clearly explains how the requirement is addressed.
+1. Explanation clarity
 
-Mark Unclear if wording is vague or hard to understand.
+Check if compliance_assessment clearly explains
+how the requirement is addressed.
 
-Mention the unclear topic briefly.
+Mark Unclear if wording is vague.
+
+If unclear, mention the topic or pointer.
+
+
+
+2. Commentary completeness
+
+Compare regulatory_information and compliance_assessment
+pointer-by-pointer.
+
+If any requirement pointer appears missing,
+mention that pointer.
+
+Examples:
+para 3.2 missing
+section 4(b) not covered
+clause 5 not addressed
+
+Do not list all pointers.
+Only report missing ones.
+
+
+
+3. Support for conclusion
+
+Check if the conclusion in compliance_assessment
+is supported by evidence.
+
+If a pointer is not supported by evidence,
+mention that pointer.
+
 Use short identifiers if available.
 
 
 
-2. Commentary completeness  
-Check whether all important points in regulatory_information
-appear to be covered in compliance_assessment.
+4. Reference traceability
 
-If some points are missing,
-mention the missing topic.
-
-If a section or clause appears missing,
-mention that identifier.
-
-
-
-3. Support for conclusion  
-Check if the conclusion in compliance_assessment
-is supported by the evidence field.
-
-If support is weak or missing,
-mention which topic is not supported.
-
-Prefer using short identifiers if available.
-
-
-
-4. Reference traceability  
-Check if the reference in evidence is specific enough.
+Check if evidence references are specific.
 
 Mark Unclear if reference is generic.
 
 Examples:
-- policy name only
-- no section mentioned
-- clause not cited
-- minutes without date
-- report not specified
+policy name only
+no section cited
+no clause
+no date
+no version
 
-Use short reference labels if available.
+Mention briefly what is missing.
 
 
 
 5. Follow-up clarity (only if Non-Compliant / Partial / Adverse)
 
 If compliance_status is Non-Compliant, Partial, or Adverse,
-check if return_to_compliance_plan clearly explains the action.
+check return_to_compliance_plan.
 
-If unclear,
-mention which gap has no clear action.
+If action is missing or unclear,
+mention the gap or pointer.
 
 If status is Compliant → Not Applicable.
 
@@ -120,13 +132,10 @@ Result must be one of:
 Clear, Partially Clear, Unclear, Not Applicable
 
 
-Reason should be short but clear (up to 20 words).
+Reason should be short but clear (max 20 words).
 
-If result is Partially Clear or Unclear,
-mention the missing or unclear topic.
-
+Mention pointer / clause / section if available.
 Do not copy long text.
-Prefer short identifiers when available.
 
 
 
@@ -138,8 +147,7 @@ Partially Clear
 Unclear
 
 
-overall_note.reason must give one short summary of the main issue.
-Do not leave empty.
+overall_note.reason must summarize main issue briefly.
 
 
 
