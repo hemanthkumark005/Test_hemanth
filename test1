@@ -1,11 +1,1 @@
 
-Rules for output:
-- In pointer_analysis, include only highest-level requirement pointers.
-- Use exact visible labels if present; otherwise use a short topic phrase.
-- Do not invent labels.
-- Keep each reason concise (up to 15 words).
-- explanation_clarity / commentary_completeness / support_for_conclusion / reference_traceability / followup_clarity must use only:
-  Clear, Partially Clear, Unclear, Not Applicable
-- overall_note.result must be:
-  Clear, Partially Clear, or Unclear
-- overall_note.reason must always be filled with one short summary sentence.
