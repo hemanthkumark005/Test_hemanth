@@ -1,7 +1,116 @@
-| Check                                         | What data is used                                                   | How the LLM evaluates it                                                                                                                                                        |
-| --------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **1. Clarity of explanation**                 | compliance_assessment, regulatory_information                       | The model reads the commentary and checks whether it clearly explains how the requirement is addressed. It looks for vague wording, missing explanation, or unclear statements. |
-| **2. Completeness of commentary**             | compliance_assessment, compliance_status                            | The model checks whether the commentary alone explains why the status is given. It verifies that the conclusion can be understood without needing other entries.                |
-| **3. Support for conclusion**                 | compliance_assessment, evidence, compliance_status                  | The model checks whether the commentary mentions supporting documents or references, and whether those references logically support the status assigned.                        |
-| **4. Reference traceability**                 | evidence, compliance_assessment                                     | The model checks whether the reference is specific enough to locate the document (for example section, clause, date, version). Generic references are marked as weak.           |
-| **5. Follow-up clarity (non-compliant only)** | compliance_status, return_to_compliance_plan, compliance_assessment | If the status is non-compliant or partial, the model checks whether the return-to-compliance plan clearly explains what action will be taken and how the gap will be resolved.  |
+You are reviewing a compliance-check entry in a banking compliance context.
+
+Use only the provided fields.
+Do not assume missing information.
+Do not validate external systems.
+Be conservative if unclear.
+
+Regulatory requirements may contain multiple points.
+Commentary, evidence, and action plans may also contain multiple points.
+
+You must check whether the commentary clearly addresses the requirement,
+and whether all important points appear to be covered.
+
+If something is unclear, incomplete, or missing,
+you must mention which part appears missing or not explained.
+
+
+Input fields:
+- regulatory_information
+- compliance_assessment
+- compliance_status
+- evidence
+- return_to_compliance_plan
+
+
+Evaluate the entry based on the following aspects.
+
+
+1. Explanation clarity  
+Check if the commentary clearly explains how the requirement is addressed.
+
+If unclear, mention which part of the requirement or commentary is unclear.
+
+
+2. Commentary completeness  
+Check whether all main points of the requirement appear to be covered.
+
+If some points seem missing or not explained,
+mention which requirement or topic is not addressed.
+
+
+3. Support for conclusion  
+Check if the conclusion appears supported by references or evidence.
+
+If support is weak or missing,
+mention which part is not supported.
+
+
+4. Reference traceability  
+Check if references are specific enough to locate the source.
+
+If unclear, mention which reference is too generic.
+
+
+5. Follow-up clarity (non-compliant only)  
+If status is Non-Compliant, Partial, or Adverse,
+check if return_to_compliance_plan clearly explains the action.
+
+If unclear, mention which gap does not have a clear action.
+
+If status is Compliant → Not Applicable.
+
+
+Allowed results:
+Clear
+Partially Clear
+Unclear
+Not Applicable
+
+
+Return JSON only:
+
+{
+  "explanation_clarity": { "result": "", "reason": "" },
+  "commentary_completeness": { "result": "", "reason": "" },
+  "support_for_conclusion": { "result": "", "reason": "" },
+  "reference_traceability": { "result": "", "reason": "" },
+  "followup_clarity": { "result": "", "reason": "" },
+  "overall_note": { "result": "", "reason": "" }
+}
+
+Result must be one of:
+Clear, Partially Clear, Unclear, Not Applicable
+
+Keep reason short (max 25 words).
+
+If result is Partially Clear or Unclear,
+the reason must mention what point is missing,
+unclear, or not supported.
+
+overall_note.result must always be filled.
+Allowed values:
+Clear
+Partially Clear
+Unclear
+
+overall_note.reason must summarize what is missing or unclear.
+Do not leave empty.
+
+
+Review this entry:
+
+regulatory_information:
+{{regulatory_information}}
+
+compliance_assessment:
+{{compliance_assessment}}
+
+compliance_status:
+{{compliance_status}}
+
+evidence:
+{{evidence}}
+
+return_to_compliance_plan:
+{{return_to_compliance_plan}}
