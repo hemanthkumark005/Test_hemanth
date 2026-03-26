@@ -8,11 +8,17 @@ Be conservative if unclear.
 Regulatory requirements may contain multiple points.
 Commentary, evidence, and action plans may also contain multiple points.
 
-You must check whether the commentary clearly addresses the requirement,
-and whether all important points appear to be covered.
+You must compare the regulatory_information and compliance_assessment
+and check whether each important point in the requirement appears to be addressed.
 
-If something is unclear, incomplete, or missing,
-you must mention which part appears missing or not explained.
+When referring to missing or unclear points,
+use short descriptions (3–6 words).
+
+Do not copy full sentences from the input.
+Do not repeat the full regulatory text.
+Do not include long quotations.
+Mention only the topic or requirement briefly.
+
 
 
 Input fields:
@@ -23,42 +29,63 @@ Input fields:
 - return_to_compliance_plan
 
 
+
 Evaluate the entry based on the following aspects.
+
 
 
 1. Explanation clarity  
 Check if the commentary clearly explains how the requirement is addressed.
 
-If unclear, mention which part of the requirement or commentary is unclear.
+Mark Unclear if wording is vague or difficult to understand.
+
+If unclear, mention the topic briefly (few words only).
+Do not copy long text.
+
 
 
 2. Commentary completeness  
-Check whether all main points of the requirement appear to be covered.
+Check whether all important points in regulatory_information
+appear to be addressed in compliance_assessment.
 
-If some points seem missing or not explained,
-mention which requirement or topic is not addressed.
+If some points seem missing,
+mention the missing topic briefly (few words only).
+
+Do not copy full sentences.
+Do not repeat regulatory text.
+
 
 
 3. Support for conclusion  
-Check if the conclusion appears supported by references or evidence.
+Check if the conclusion in compliance_assessment
+is supported by the evidence mentioned.
 
 If support is weak or missing,
-mention which part is not supported.
+mention which topic or statement is not supported,
+using short phrases only.
+
 
 
 4. Reference traceability  
-Check if references are specific enough to locate the source.
+Check if the reference in evidence is specific enough.
 
-If unclear, mention which reference is too generic.
+Generic references should be marked Unclear.
+
+Mention the reference briefly (example: policy name only, no section).
+
+Do not copy full reference text.
+
 
 
 5. Follow-up clarity (non-compliant only)  
-If status is Non-Compliant, Partial, or Adverse,
+If compliance_status is Non-Compliant, Partial, or Adverse,
 check if return_to_compliance_plan clearly explains the action.
 
-If unclear, mention which gap does not have a clear action.
+If unclear,
+mention which gap or topic has no clear action.
 
 If status is Compliant → Not Applicable.
+
 
 
 Allowed results:
@@ -66,6 +93,7 @@ Clear
 Partially Clear
 Unclear
 Not Applicable
+
 
 
 Return JSON only:
@@ -79,23 +107,32 @@ Return JSON only:
   "overall_note": { "result": "", "reason": "" }
 }
 
+
 Result must be one of:
 Clear, Partially Clear, Unclear, Not Applicable
 
-Keep reason short (max 25 words).
+Keep reason short (max 6–8 words).
 
 If result is Partially Clear or Unclear,
-the reason must mention what point is missing,
-unclear, or not supported.
+the reason must mention the missing or unclear topic briefly.
+
+Do not copy full text.
+Do not quote long sentences.
+Use short phrases only.
+
+
 
 overall_note.result must always be filled.
+
 Allowed values:
 Clear
 Partially Clear
 Unclear
 
-overall_note.reason must summarize what is missing or unclear.
+
+overall_note.reason must contain one short summary sentence.
 Do not leave empty.
+
 
 
 Review this entry:
