@@ -1,1 +1,12 @@
 
+| **Area**                       | **Key Pointers (Aligned to Dataiku Docs)**                                                                                                                      |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **MLOps & Model Lifecycle**    | • Model evaluation stores for tracking performance over time <br> • Automated retraining using scenarios <br> • Model deployment bundles and version management |
+| **Data Quality & Monitoring**  | • Built-in metrics and checks on datasets <br> • Automated data quality rules and alerts <br> • Integration with scenarios for monitoring and notifications     |
+| **Flow & Project Design**      | • Logical organization using Flow Zones <br> • Dependency tracking across datasets and recipes <br> • Reusable and modular pipeline design                      |
+| **Partitioning & Performance** | • Partitioned datasets for incremental processing <br> • Pushdown optimization with SQL/Spark engines <br> • Efficient handling of large-scale data pipelines   |
+| **Automation (Scenarios)**     | • Time-based and trigger-based scenario execution <br> • Conditional steps and error handling <br> • Integration with metrics, checks, and model retraining     |
+| **API Deployment (API Node)**  | • Deployment of models as REST API endpoints <br> • Versioning and lifecycle management of APIs <br> • Monitoring of API usage and performance                  |
+| **Governance & Collaboration** | • Role-based access control and permissions <br> • Project versioning and audit trails <br> • Approval workflows for deployment                                 |
+| **GenAI Capabilities**         | • LLM Mesh for connecting multiple LLM providers <br> • Prompt Studio for prompt engineering <br> • Retrieval-Augmented Generation (RAG) pipelines              |
+| **Plugins & Extensibility**    | • Development of custom plugins and recipes <br> • Integration with external APIs and Python code <br> • Reusable components for enterprise use cases           |
